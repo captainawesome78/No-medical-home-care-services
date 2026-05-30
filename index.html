@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Awesome Non-Medical Home Services - Professional non-medical care, nursing support & home health services in Hyderabad & across India. Compassionate care at your doorstep.">
+    <title>Awesome Non-Medical Home Services | Home Care in Hyderabad</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js CDN (r134 - stable and lightweight) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        
+        :root {
+            --tw-color-primary: #14b8a6;
+        }
+        
+        * {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        
+        .hero-canvas {
+            filter: drop-shadow(0 25px 25px rgb(20 184 166 / 0.15));
+        }
+        
+        .section-header {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-100 shadow-sm">
+        <div class="max-w-screen-2xl mx-auto px-8 py-5 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-x-3">
+                <div class="w-9 h-9 bg-teal-500 rounded-2xl flex items-center justify-center text-white text-2xl shadow-inner">🏠</div>
+                <div>
+                    <h1 class="text-2xl font-semibold tracking-tighter section-header">AweCare</h1>
+                    <p class="text-[10px] text-slate-500 -mt-1 tracking-[0.5px]">NON-MEDICAL HOME SERVICES</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                <a href="#home" onclick="smoothScrollTo('home')" class="hover:text-teal-600">Home</a>
+                <a href="#about" onclick="smoothScrollTo('about')" class="hover:text-teal-600">About</a>
+                <a href="#services" onclick="smoothScrollTo('services')" class="hover:text-teal-600">Services</a>
+                <a href="#pricing" onclick="smoothScrollTo('pricing')" class="hover:text-teal-600">Pricing</a>
+                <a href="#contact" onclick="smoothScrollTo('contact')" class="hover:text-teal-600">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-x-4">
+                <a href="tel:+919876543210" 
+                   class="hidden sm:flex items-center gap-x-2 px-5 py-2.5 text-sm font-medium border border-slate-200 rounded-3xl hover:border-teal-200 hover:bg-teal-50">
+                    <span class="text-teal-500">📞</span>
+                    +91 98765 43210
+                </a>
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                        class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-3xl text-sm font-semibold flex items-center gap-x-2">
+                    <span>Book Free Consultation</span>
+                    <span class="text-lg leading-none">→</span>
+                </button>
+                
+                <!-- Mobile menu button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden w-11 h-11 flex items-center justify-center text-2xl">
+                    ☰
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t px-8 py-6 flex flex-col gap-y-4 text-sm font-medium">
+            <a href="#home" onclick="toggleMobileMenu()" class="py-2">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="py-2">About</a>
+            <a href="#services" onclick="toggleMobileMenu()" class="py-2">Services</a>
+            <a href="#pricing" onclick="toggleMobileMenu()" class="py-2">Pricing</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="py-2">Contact Us</a>
+            <a href="tel:+919876543210" class="py-3 text-center bg-teal-50 text-teal-700 rounded-3xl font-medium">Call +91 98765 43210</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION with Interactive Three.js 3D -->
+    <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Three.js Canvas -->
+        <canvas id="hero-canvas" class="hero-canvas absolute inset-0 w-full h-full pointer-events-auto"></canvas>
+        
+        <!-- Hero Content Overlay -->
+        <div class="relative z-10 max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-12 items-center h-screen">
+            <div class="md:col-span-7 space-y-8">
+                <div class="inline-flex items-center gap-x-2 bg-white/90 backdrop-blur-md px-6 py-2 rounded-3xl text-sm font-medium border border-teal-100">
+                    <div class="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></div>
+                    Now serving Hyderabad &amp; across India
+                </div>
+                
+                <h1 class="text-6xl md:text-7xl leading-none font-semibold tracking-tighter section-header max-w-xl">
+                    Compassionate care.<br>Right at your doorstep.
+                </h1>
+                
+                <p class="text-2xl text-slate-600 max-w-md">
+                    Professional non-medical caregiving, nursing support &amp; home health services. 
+                    Because your loved ones deserve the best — at home.
+                </p>
+                
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })"
+                            class="bg-teal-600 hover:bg-teal-700 text-white px-8 py-4 rounded-3xl text-lg font-semibold flex items-center gap-x-3 shadow-xl shadow-teal-500/30">
+                        Get Free Consultation
+                        <span class="text-3xl">→</span>
+                    </button>
+                    
+                    <a href="#services" 
+                       onclick="smoothScrollTo('services')"
+                       class="border-2 border-slate-300 hover:border-teal-600 px-8 py-4 rounded-3xl text-lg font-medium flex items-center">
+                        Explore Services
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-x-8 text-sm">
+                    <div class="flex -space-x-4">
+                        <div class="w-8 h-8 bg-teal-100 rounded-2xl flex items-center justify-center ring-2 ring-white text-lg">👵</div>
+                        <div class="w-8 h-8 bg-amber-100 rounded-2xl flex items-center justify-center ring-2 ring-white text-lg">🧓</div>
+                        <div class="w-8 h-8 bg-sky-100 rounded-2xl flex items-center justify-center ring-2 ring-white text-lg">🧑‍🦽</div>
+                    </div>
+                    <div>
+                        <p class="font-medium">Trusted by 500+ families in Hyderabad</p>
+                        <p class="text-slate-500 text-xs">4.98/5 average rating • 24/7 support</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side floating badge (for visual balance) -->
+            <div class="hidden md:flex md:col-span-5 justify-end">
+                <div class="glass rounded-3xl px-8 py-6 max-w-xs shadow-2xl border border-white/50">
+                    <div class="flex items-center gap-x-3 mb-4">
+                        <span class="text-4xl">❤️</span>
+                        <div>
+                            <p class="font-semibold">Live-in Care • Starting ₹1,800/day</p>
+                            <p class="text-teal-600 text-sm">24-hour bedside support</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Personalized care plans. Trained caregivers. Zero hospital visits for daily needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 hidden md:flex flex-col items-center gap-y-2 text-xs font-medium text-slate-400">
+            <div>SCROLL TO EXPLORE</div>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="max-w-screen-2xl mx-auto px-8 py-24">
+        <div class="grid md:grid-cols-12 gap-16 items-center">
+            <div class="md:col-span-5">
+                <div class="sticky top-8">
+                    <span class="px-4 py-1 bg-teal-100 text-teal-700 text-sm font-medium rounded-3xl">OUR STORY</span>
+                    <h2 class="section-header text-5xl leading-none font-semibold tracking-tighter mt-6">Care that feels like family</h2>
+                    <p class="mt-8 text-xl text-slate-600">
+                        Founded in Hyderabad, Awesome Non-Medical Home Services was born from a simple belief: 
+                        everyone deserves dignified, professional care in the comfort of their own home.
+                    </p>
+                    <div class="mt-12 flex items-center gap-x-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-semibold text-teal-600">500+</div>
+                            <div class="text-sm text-slate-500">Families served</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-semibold text-teal-600">24/7</div>
+                            <div class="text-sm text-slate-500">Support</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-semibold text-teal-600">98%</div>
+                            <div class="text-sm text-slate-500">Satisfaction rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 space-y-8">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                        <h4 class="font-semibold text-xl">Our Mission</h4>
+                        <p class="mt-4 text-slate-600">
+                            To deliver hospital-quality non-medical care and nursing support at home — with warmth, dignity, and respect.
+                        </p>
+                    </div>
+                    <div class="bg-white rounded-3xl p-8 border border-slate-100">
+                        <h4 class="font-semibold text-xl">Our Values</h4>
+                        <ul class="mt-4 space-y-3 text-slate-600">
+                            <li class="flex gap-x-3 items-center"><span class="text-teal-500">✔</span> Compassion first</li>
+                            <li class="flex gap-x-3 items-center"><span class="text-teal-500">✔</span> Trained &amp; vetted caregivers</li>
+                            <li class="flex gap-x-3 items-center"><span class="text-teal-500">✔</span> Transparent pricing</li>
+                            <li class="flex gap-x-3 items-center"><span class="text-teal-500">✔</span> Personalized plans</li>
+                            <li class="flex gap-x-3 items-center"><span class="text-teal-500">✔</span> Family involvement</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 max-w-prose">
+                    Whether it's post-surgery recovery, elderly companionship, chronic condition support, or 24-hour bedside care — 
+                    our caregivers and nurses bring peace of mind to families across Hyderabad and India.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="bg-white py-24">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="text-center max-w-md mx-auto mb-16">
+                <span class="text-teal-600 text-sm font-medium">WHAT WE OFFER</span>
+                <h2 class="section-header text-5xl font-semibold tracking-tighter mt-3">Professional services tailored for you</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-slate-50 hover:bg-white border border-transparent hover:border-teal-200 group rounded-3xl p-8 flex flex-col">
+                    <div class="text-6xl mb-6">🧑‍🦳</div>
+                    <h3 class="text-2xl font-semibold">Non-Medical Caregiving</h3>
+                    <p class="mt-4 text-slate-600 flex-1">Daily living assistance, companionship, hygiene help, meal preparation, mobility support, medication reminders &amp; light housekeeping.</p>
+                    <div class="mt-8 pt-8 border-t text-teal-600 font-medium text-sm flex items-center justify-between group-hover:gap-x-2">
+                        Learn more <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-slate-50 hover:bg-white border border-transparent hover:border-teal-200 group rounded-3xl p-8 flex flex-col">
+                    <div class="text-6xl mb-6">🛏️</div>
+                    <h3 class="text-2xl font-semibold">24-Hour Bedside Attendants</h3>
+                    <p class="mt-4 text-slate-600 flex-1">Trained caregivers for post-surgery recovery, elderly care, dementia support, and continuous monitoring. Available in 12-hr or 24-hr shifts.</p>
+                    <div class="mt-8 pt-8 border-t text-teal-600 font-medium text-sm flex items-center justify-between group-hover:gap-x-2">
+                        Learn more <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-slate-50 hover:bg-white border border-transparent hover:border-teal-200 group rounded-3xl p-8 flex flex-col">
+                    <div class="text-6xl mb-6">🩺</div>
+                    <h3 class="text-2xl font-semibold">Skilled Nursing Support</h3>
+                    <p class="mt-4 text-slate-600 flex-1">Wound care, injections, vital monitoring, IV management, physiotherapy guidance &amp; post-hospital discharge support by qualified nurses.</p>
+                    <div class="mt-8 pt-8 border-t text-teal-600 font-medium text-sm flex items-center justify-between group-hover:gap-x-2">
+                        Learn more <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-slate-50 hover:bg-white border border-transparent hover:border-teal-200 group rounded-3xl p-8 flex flex-col">
+                    <div class="text-6xl mb-6">👪</div>
+                    <h3 class="text-2xl font-semibold">Elderly &amp; Senior Care</h3>
+                    <p class="mt-4 text-slate-600 flex-1">Personalized companionship, dementia/Alzheimer’s care, fall prevention, emotional support, and activities that keep seniors active and happy.</p>
+                    <div class="mt-8 pt-8 border-t text-teal-600 font-medium text-sm flex items-center justify-between group-hover:gap-x-2">
+                        Learn more <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-slate-50 hover:bg-white border border-transparent hover:border-teal-200 group rounded-3xl p-8 flex flex-col">
+                    <div class="text-6xl mb-6">🏥</div>
+                    <h3 class="text-2xl font-semibold">Post-Surgery &amp; Recovery Care</h3>
+                    <p class="mt-4 text-slate-600 flex-1">Rehabilitation assistance, mobility training, medication management, and round-the-clock monitoring during recovery at home.</p>
+                    <div class="mt-8 pt-8 border-t text-teal-600 font-medium text-sm flex items-center justify-between group-hover:gap-x-2">
+                        Learn more <span class="text-xl">→</span>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-slate-50 hover:bg-white border border-transparent hover:border-teal-200 group rounded-3xl p-8 flex flex-col">
+                    <div class="text-6xl mb-6">🧬</div>
+                    <h3 class="text-2xl font-semibold">Chronic Condition Management</h3>
+                    <p class="mt-4 text-slate-600 flex-1">Support for diabetes, hypertension, Parkinson’s, cancer recovery, and palliative care with trained professionals.</p>
+                    <div class="mt-8 pt-8 border-t text-teal-600 font-medium text-sm flex items-center justify-between group-hover:gap-x-2">
+                        Learn more <span class="text-xl">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="max-w-screen-2xl mx-auto px-8 py-24 bg-slate-50">
+        <div class="text-center max-w-md mx-auto mb-16">
+            <span class="text-teal-600 text-sm font-medium">TRANSPARENT PRICING</span>
+            <h2 class="section-header text-5xl font-semibold tracking-tighter mt-3">Affordable plans. No hidden fees.</h2>
+            <p class="mt-4 text-slate-600">All prices in INR. Custom quotes available after free consultation. Prices may vary slightly by location and requirements.</p>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Pricing Card 1 -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-transparent hover:border-teal-300 flex flex-col">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <span class="px-4 py-1 text-xs font-semibold bg-amber-100 text-amber-700 rounded-3xl">MOST POPULAR</span>
+                        <h3 class="text-3xl font-semibold mt-6">12-Hour Shift</h3>
+                        <p class="text-slate-500">Day or Night Care</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-5xl font-semibold text-teal-600">₹1,200</span>
+                        <span class="block text-sm text-slate-500">per shift</span>
+                    </div>
+                </div>
+                <ul class="mt-8 space-y-4 flex-1 text-slate-600">
+                    <li class="flex items-center gap-x-3">✅ Personal hygiene &amp; grooming</li>
+                    <li class="flex items-center gap-x-3">✅ Meal preparation &amp; feeding</li>
+                    <li class="flex items-center gap-x-3">✅ Medication reminders</li>
+                    <li class="flex items-center gap-x-3">✅ Mobility assistance</li>
+                    <li class="flex items-center gap-x-3">✅ Light housekeeping</li>
+                    <li class="flex items-center gap-x-3">✅ Companion care</li>
+                </ul>
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                        class="mt-12 w-full py-4 bg-slate-900 hover:bg-black text-white rounded-3xl font-medium">Choose 12-Hour Plan</button>
+            </div>
+            
+            <!-- Pricing Card 2 -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-teal-300 flex flex-col relative">
+                <div class="absolute -top-3 right-8 bg-teal-600 text-white text-xs font-bold px-6 py-1 rounded-3xl">BEST VALUE</div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-3xl font-semibold mt-6">24-Hour Live-in Care</h3>
+                        <p class="text-slate-500">Full day &amp; night support</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-5xl font-semibold text-teal-600">₹2,200</span>
+                        <span class="block text-sm text-slate-500">per day</span>
+                    </div>
+                </div>
+                <ul class="mt-8 space-y-4 flex-1 text-slate-600">
+                    <li class="flex items-center gap-x-3">✅ Everything in 12-hour plan</li>
+                    <li class="flex items-center gap-x-3">✅ Overnight monitoring</li>
+                    <li class="flex items-center gap-x-3">✅ 24-hour bedside attendant</li>
+                    <li class="flex items-center gap-x-3">✅ Emergency response</li>
+                    <li class="flex items-center gap-x-3">✅ Family updates via app</li>
+                    <li class="flex items-center gap-x-3">✅ Free initial assessment</li>
+                </ul>
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                        class="mt-12 w-full py-4 bg-teal-600 hover:bg-teal-700 text-white rounded-3xl font-medium">Choose 24-Hour Plan</button>
+            </div>
+            
+            <!-- Pricing Card 3 -->
+            <div class="bg-white rounded-3xl p-8 border-2 border-transparent hover:border-teal-300 flex flex-col">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="text-3xl font-semibold mt-6">Skilled Nursing Add-on</h3>
+                        <p class="text-slate-500">Add to any plan</p>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-5xl font-semibold text-teal-600">₹800</span>
+                        <span class="block text-sm text-slate-500">per shift</span>
+                    </div>
+                </div>
+                <ul class="mt-8 space-y-4 flex-1 text-slate-600">
+                    <li class="flex items-center gap-x-3">✅ Wound dressing &amp; care</li>
+                    <li class="flex items-center gap-x-3">✅ Injections &amp; IV fluids</li>
+                    <li class="flex items-center gap-x-3">✅ Vital signs monitoring</li>
+                    <li class="flex items-center gap-x-3">✅ Physiotherapy guidance</li>
+                    <li class="flex items-center gap-x-3">✅ Post-surgery recovery</li>
+                    <li class="flex items-center gap-x-3">✅ Doctor coordination</li>
+                </ul>
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                        class="mt-12 w-full py-4 bg-slate-900 hover:bg-black text-white rounded-3xl font-medium">Add Nursing Support</button>
+            </div>
+        </div>
+        
+        <p class="text-center text-slate-500 text-sm mt-12">Monthly packages available from ₹35,000. Prices inclusive of travel in Hyderabad. Call for exact quote.</p>
+    </section>
+
+    <!-- TESTIMONIALS / WHY US -->
+    <section class="max-w-screen-2xl mx-auto px-8 py-24">
+        <div class="text-center mb-16">
+            <h2 class="section-header text-5xl font-semibold tracking-tighter">Real families. Real stories.</h2>
+        </div>
+        
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-3xl">
+                <div class="flex gap-x-1 text-amber-400 text-2xl">★★★★★</div>
+                <p class="mt-6 italic">"My mother recovered beautifully at home after knee surgery thanks to their 24-hour caregiver. Professional yet so caring. Highly recommend!"</p>
+                <div class="mt-12 flex items-center gap-x-4">
+                    <div class="w-10 h-10 bg-slate-200 rounded-2xl"></div>
+                    <div>
+                        <p class="font-medium">Mrs. Lakshmi Reddy</p>
+                        <p class="text-xs text-slate-500">Hyderabad • Mother of 78</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-3xl">
+                <div class="flex gap-x-1 text-amber-400 text-2xl">★★★★☆</div>
+                <p class="mt-6 italic">"The nursing support for my father’s diabetes management has been life-changing. Vitals monitored daily and we get regular updates. Peace of mind!"</p>
+                <div class="mt-12 flex items-center gap-x-4">
+                    <div class="w-10 h-10 bg-slate-200 rounded-2xl"></div>
+                    <div>
+                        <p class="font-medium">Mr. Rajesh Sharma</p>
+                        <p class="text-xs text-slate-500">Hyderabad • Son of senior citizen</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-8 rounded-3xl">
+                <div class="flex gap-x-1 text-amber-400 text-2xl">★★★★★</div>
+                <p class="mt-6 italic">"Best decision ever. Their team handled everything from meals to emotional support for my grandmother with dementia. Feels like extended family now."</p>
+                <div class="mt-12 flex items-center gap-x-4">
+                    <div class="w-10 h-10 bg-slate-200 rounded-2xl"></div>
+                    <div>
+                        <p class="font-medium">Ms. Priya Patel</p>
+                        <p class="text-xs text-slate-500">Hyderabad • Granddaughter</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="bg-slate-900 text-white py-24">
+        <div class="max-w-screen-2xl mx-auto px-8 grid md:grid-cols-12 gap-16">
+            <div class="md:col-span-5">
+                <h2 class="section-header text-5xl font-semibold tracking-tighter">Let’s take care of your loved ones together</h2>
+                <p class="mt-8 text-slate-400 text-lg">Fill out the form or call us directly. Our team will respond within 2 hours.</p>
+                
+                <div class="mt-12 space-y-8">
+                    <div class="flex items-center gap-x-4">
+                        <span class="text-4xl">📍</span>
+                        <div>
+                            <p class="font-medium">Hyderabad Head Office</p>
+                            <p class="text-slate-400">Banjara Hills, Hyderabad, Telangana 500034</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-x-4">
+                        <span class="text-4xl">📞</span>
+                        <div>
+                            <p class="font-medium">+91 98765 43210</p>
+                            <p class="text-teal-400">Available 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-x-4">
+                        <span class="text-4xl">✉️</span>
+                        <div>
+                            <p class="font-medium">care@awecare.in</p>
+                            <p class="text-slate-400">Quick reply guaranteed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="md:col-span-7 bg-white/10 backdrop-blur-3xl rounded-3xl p-10">
+                <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-8">
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm mb-2 text-slate-300">Your Name</label>
+                            <input type="text" id="name" required 
+                                   class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400">
+                        </div>
+                        <div>
+                            <label class="block text-sm mb-2 text-slate-300">Phone Number</label>
+                            <input type="tel" id="phone" required 
+                                   class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm mb-2 text-slate-300">Service Needed</label>
+                        <select id="service" class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white focus:outline-none focus:border-teal-400">
+                            <option value="">Select a service...</option>
+                            <option value="12hr-care">12-Hour Care</option>
+                            <option value="24hr-care">24-Hour Live-in Care</option>
+                            <option value="nursing">Skilled Nursing Support</option>
+                            <option value="elderly">Elderly Companion Care</option>
+                            <option value="recovery">Post-Surgery Recovery</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm mb-2 text-slate-300">Message / Requirements</label>
+                        <textarea id="message" rows="4" 
+                                  class="w-full bg-white/10 border border-white/30 rounded-3xl px-6 py-5 text-white placeholder:text-slate-400 focus:outline-none focus:border-teal-400"></textarea>
+                    </div>
+                    
+                    <button type="submit"
+                            class="w-full bg-teal-500 hover:bg-teal-400 py-6 text-lg font-semibold rounded-3xl text-slate-900">
+                        SEND MESSAGE • GET CALLBACK IN 2 HOURS
+                    </button>
+                    
+                    <p class="text-center text-xs text-slate-400">We respect your privacy. No spam ever.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-16">
+        <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-2 md:grid-cols-4 gap-y-12">
+            <div>
+                <div class="flex items-center gap-x-3 text-white mb-6">
+                    <div class="w-9 h-9 bg-teal-500 rounded-2xl flex items-center justify-center text-2xl">🏠</div>
+                    <h1 class="text-2xl font-semibold tracking-tighter section-header">AweCare</h1>
+                </div>
+                <p class="text-sm">Professional Non-Medical Home Services</p>
+                <p class="text-xs mt-6">© 2026 Awesome Non-Medical Home Services. All rights reserved.</p>
+            </div>
+            
+            <div>
+                <p class="font-medium text-white mb-4">Quick Links</p>
+                <div class="space-y-3 text-sm">
+                    <a href="#services" class="block hover:text-white">Services</a>
+                    <a href="#pricing" class="block hover:text-white">Pricing</a>
+                    <a href="#about" class="block hover:text-white">About Us</a>
+                    <a href="#" class="block hover:text-white">Careers</a>
+                </div>
+            </div>
+            
+            <div>
+                <p class="font-medium text-white mb-4">Service Areas</p>
+                <div class="space-y-3 text-sm">
+                    <p>Hyderabad • Secunderabad</p>
+                    <p>Banjara Hills • Jubilee Hills • Gachibowli</p>
+                    <p>Across Telangana &amp; India</p>
+                </div>
+            </div>
+            
+            <div>
+                <p class="font-medium text-white mb-4">Follow us</p>
+                <div class="flex gap-x-4 text-2xl">
+                    <a href="#" class="hover:text-teal-400">𝕏</a>
+                    <a href="#" class="hover:text-teal-400">📸</a>
+                    <a href="#" class="hover:text-teal-400">𝕃</a>
+                </div>
+                <p class="mt-8 text-xs">Built as a static site for GitHub Pages.<br>Ready to host on Hostinger once you get your domain.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Tailwind CSS Configuration
+         */
+        function initializeTailwind() {
+            return {
+                config(userConfig = {}) {
+                    return {
+                        content: [],
+                        theme: {
+                            extend: {
+                                colors: {
+                                    primary: '#14b8a6',
+                                }
+                            }
+                        },
+                        plugins: [],
+                    }
+                },
+                theme: {
+                    extend: {},
+                },
+            }
+        }
+        
+        /**
+         * Smooth scroll helper
+         */
+        function smoothScrollTo(id) {
+            const el = document.getElementById(id)
+            if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }
+        
+        /**
+         * Mobile menu toggle
+         */
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu')
+            menu.classList.toggle('hidden')
+        }
+        
+        /**
+         * Form submission handler (static demo - shows success message)
+         */
+        function handleSubmit(e) {
+            e.preventDefault()
+            const btn = e.target.querySelector('button')
+            const originalText = btn.innerHTML
+            
+            btn.innerHTML = `
+                <span class="flex items-center justify-center gap-x-2">
+                    <span class="animate-spin inline-block w-5 h-5 border-2 border-slate-900 border-t-transparent rounded-full"></span>
+                    SENDING...
+                </span>`
+            
+            setTimeout(() => {
+                alert("✅ Thank you! Our team will call you back within 2 hours.\n\n(Static demo — in production this would email you)")
+                e.target.reset()
+                btn.innerHTML = originalText
+            }, 1400)
+        }
+        
+        /**
+         * Three.js Interactive 3D Hero Scene
+         * - Central pulsing sphere (represents "home/heart")
+         * - 8 smaller orbiting spheres (family / care network)
+         * - Responds to mouse movement (tilt & rotation)
+         * - Gentle scroll parallax on camera depth
+         * - Clean minimalist aesthetic matching the site
+         */
+        function initThreeJS() {
+            const canvas = document.getElementById('hero-canvas')
+            if (!canvas) return
+            
+            // Scene setup
+            const scene = new THREE.Scene()
+            scene.fog = new THREE.Fog(0xf8fafc, 8, 30)
+            
+            const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100)
+            camera.position.set(0, 0, 12)
+            
+            const renderer = new THREE.WebGLRenderer({
+                canvas: canvas,
+                antialias: true,
+                alpha: true
+            })
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+            renderer.shadowMap.enabled = false
+            
+            // Lights
+            const ambient = new THREE.AmbientLight(0xffffff, 0.6)
+            scene.add(ambient)
+            
+            const pointLight = new THREE.PointLight(0x14b8a6, 2.5, 50)
+            pointLight.position.set(5, 5, 10)
+            scene.add(pointLight)
+            
+            const pointLight2 = new THREE.PointLight(0x0ea5e9, 1.8, 50)
+            pointLight2.position.set(-8, -3, 5)
+            scene.add(pointLight2)
+            
+            // Central pulsing sphere
+            const centralGeo = new THREE.SphereGeometry(2.2, 64, 64)
+            const centralMat = new THREE.MeshPhongMaterial({
+                color: 0x14b8a6,
+                shininess: 100,
+                transparent: true,
+                opacity: 0.9,
+                emissive: 0x14b8a6,
+                emissiveIntensity: 0.3
+            })
+            const centralSphere = new THREE.Mesh(centralGeo, centralMat)
+            scene.add(centralSphere)
+            
+            // Small orbiting spheres (care network)
+            const smallSpheres = []
+            const smallMat = new THREE.MeshPhongMaterial({
+                color: 0x67e8f9,
+                shininess: 30
+            })
+            
+            for (let i = 0; i < 8; i++) {
+                const radius = 0.6 + Math.random() * 0.4
+                const geo = new THREE.SphereGeometry(radius, 32, 32)
+                const mesh = new THREE.Mesh(geo, smallMat)
+                
+                // Initial random position on a circle
+                const angle = (i * Math.PI * 2) / 8
+                mesh.userData = {
+                    baseRadius: 5.5,
+                    angle: angle,
+                    speed: 0.008 + Math.random() * 0.008,
+                    heightOffset: (Math.random() - 0.5) * 2.5
+                }
+                
+                scene.add(mesh)
+                smallSpheres.push(mesh)
+            }
+            
+            // Mouse interaction variables
+            let mouseX = 0
+            let mouseY = 0
+            let targetMouseX = 0
+            let targetMouseY = 0
+            
+            // Scroll depth for parallax
+            let scrollY = 0
+            let targetScrollY = 0
+            
+            function onMouseMove(e) {
+                targetMouseX = (e.clientX / window.innerWidth) * 2 - 1
+                targetMouseY = -(e.clientY / window.innerHeight) * 2 + 1
+            }
+            
+            // Listen to scroll for camera parallax
+            function onScroll() {
+                targetScrollY = window.scrollY / 800
+            }
+            
+            window.addEventListener('mousemove', onMouseMove)
+            window.addEventListener('scroll', onScroll, { passive: true })
+            
+            // Animation variables
+            let time = 0
+            
+            function animate() {
+                requestAnimationFrame(animate)
+                time += 0.016
+                
+                // Smooth mouse lerping
+                mouseX = mouseX * 0.92 + targetMouseX * 0.08
+                mouseY = mouseY * 0.92 + targetMouseY * 0.08
+                
+                // Central sphere pulse
+                const pulse = Math.sin(time * 2.5) * 0.12 + 1
+                centralSphere.scale.setScalar(pulse)
+                centralSphere.rotation.y = time * 0.3
+                
+                // Orbiting spheres
+                smallSpheres.forEach((sphere, i) => {
+                    const data = sphere.userData
+                    
+                    // Mouse influence on orbit angle
+                    data.angle += data.speed + (mouseX * 0.003)
+                    
+                    const x = Math.cos(data.angle) * data.baseRadius
+                    const z = Math.sin(data.angle) * data.baseRadius
+                    const y = Math.sin(time * 1.8 + i) * 1.8 + data.heightOffset
+                    
+                    sphere.position.set(x + mouseX * 1.2, y + mouseY * 1.5, z)
+                    
+                    // Slight rotation on each sphere
+                    sphere.rotation.x = time * 0.8
+                    sphere.rotation.y = time * 1.2
+                })
+                
+                // Camera parallax based on mouse + scroll
+                camera.position.x = mouseX * 4
+                camera.position.y = mouseY * 3 + 1
+                camera.position.z = 12 - targetScrollY * 6   // scroll pulls camera closer
+                
+                camera.lookAt(0, 0, 0)
+                
+                // Gentle central light movement
+                pointLight.position.x = Math.sin(time) * 8
+                pointLight.position.z = Math.cos(time * 1.3) * 8
+                
+                renderer.render(scene, camera)
+            }
+            
+            // Handle resize
+            function onResize() {
+                camera.aspect = window.innerWidth / window.innerHeight
+                camera.updateProjectionMatrix()
+                renderer.setSize(window.innerWidth, window.innerHeight)
+            }
+            
+            window.addEventListener('resize', onResize)
+            
+            // Start animation
+            animate()
+            
+            // Cleanup function (optional if you ever unload the page)
+            console.log('%c✅ Three.js interactive 3D hero initialized successfully!', 'color:#14b8a6; font-weight:600')
+        }
+        
+        /**
+         * Main initialization
+         */
+        function initializeWebsite() {
+            // Tailwind
+            const config = initializeTailwind()
+            document.documentElement.setAttribute('data-tailwind-config', JSON.stringify(config))
+            
+            // Three.js
+            initThreeJS()
+            
+            console.log('%c🚀 Awesome Non-Medical Home Services website ready for GitHub Pages!', 'background:#14b8a6;color:white;padding:1px 4px;border-radius:2px')
+            console.log('Just save this as index.html and push to GitHub. Domain later on Hostinger!')
+        }
+        
+        // Launch everything when DOM is ready
+        window.onload = initializeWebsite
+    </script>
+</body>
+</html>
