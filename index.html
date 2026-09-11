@@ -200,18 +200,19 @@
             </div>
 
             <div class="bg-white/10 p-8 rounded-[2rem] border border-white/10">
-                <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message sent to S Kumar!')">
-                    <input type="text" placeholder="Your Name" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-white">
-                    <input type="tel" placeholder="Mobile Number" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-white">
-                    <select class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-slate-300">
-                        <option>Select Service...</option>
-                        <option>Nursing Care</option>
-                        <option>Physiotherapy</option>
-                        <option>Equipment Delivery</option>
-                        <option>Hygiene/Bathing</option>
+                <form id="waForm" class="space-y-4" onsubmit="sendToWhatsApp(event)">
+                    <input type="text" id="waName" required placeholder="Your Name" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-white">
+                    <input type="tel" id="waPhone" required placeholder="Mobile Number" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-white">
+                    <select id="waService" required class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-slate-300">
+                        <option value="" class="text-slate-900">Select Service...</option>
+                        <option class="text-slate-900">Nursing Care</option>
+                        <option class="text-slate-900">Physiotherapy</option>
+                        <option class="text-slate-900">Equipment Delivery</option>
+                        <option class="text-slate-900">Hygiene/Bathing</option>
                     </select>
-                    <textarea placeholder="How can we help?" rows="3" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-white"></textarea>
-                    <button class="w-full bg-teal-500 text-slate-900 font-bold py-4 rounded-xl hover:bg-teal-400 transition-all">Submit Request</button>
+                    <textarea id="waMessage" placeholder="How can we help?" rows="3" class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 outline-none focus:border-teal-400 text-white"></textarea>
+                    <button type="submit" class="w-full bg-teal-500 text-slate-900 font-bold py-4 rounded-xl hover:bg-teal-400 transition-all">Send on WhatsApp</button>
+                    <p class="text-center text-xs text-slate-400">Opens WhatsApp with your details filled in. Tap send to reach us.</p>
                 </form>
             </div>
         </div>
@@ -220,6 +221,31 @@
     <footer class="py-12 text-center text-slate-500 text-sm">
         <p>© 2026 SK Home Care Patna. All rights reserved.</p>
     </footer>
+
+    <!-- WHATSAPP FORM -->
+    <script>
+        // WhatsApp number: country code + number, digits only (no +, spaces or dashes)
+        const WHATSAPP_NUMBER = '918825203305';
+
+        function sendToWhatsApp(e) {
+            e.preventDefault();
+            const name = document.getElementById('waName').value.trim();
+            const phone = document.getElementById('waPhone').value.trim();
+            const service = document.getElementById('waService').value;
+            const details = document.getElementById('waMessage').value.trim();
+
+            const text =
+                'Hello SK Home Care, I would like to request a service.\n\n' +
+                'Name: ' + name + '\n' +
+                'Mobile: ' + phone + '\n' +
+                'Service: ' + service +
+                (details ? '\nDetails: ' + details : '');
+
+            const url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(text);
+            window.open(url, '_blank');
+            e.target.reset();
+        }
+    </script>
 
     <!-- THREE.JS SCROLL ENGINE -->
     <script>
